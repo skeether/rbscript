@@ -155,7 +155,7 @@ local tpTitle = Instance.new("TextLabel", main)
 tpTitle.Size = UDim2.new(0, 120, 0, 28)
 tpTitle.Position = UDim2.new(0, 18, 0, 162)
 tpTitle.BackgroundTransparency = 1
-tpTitle.Text = "tp to player:"
+tpTitle.Text = "teleport to player:"
 tpTitle.TextColor3 = Color3.fromRGB(180, 180, 220)
 tpTitle.TextSize = 15
 tpTitle.Font = Enum.Font.GothamBold
@@ -487,7 +487,7 @@ tpBtn.MouseButton1Click:Connect(function()
         task.wait(0.8)
         HideInfo()
     else
-        ShowInfo("Ошибка: "..(err or "Unknown error"), Color3.fromRGB(255, 80, 80))
+        ShowInfo("error: "..(err or "Unknown error"), Color3.fromRGB(255, 80, 80))
         task.wait(1.5)
         HideInfo()
     end
