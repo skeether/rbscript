@@ -1,9 +1,5 @@
 --[[
-    SKEETHER ULTIMATE ESP + TP
-    by skeether
-    Объединённая, оптимизированная и полностью рабочая версия
-    Черно-серый дизайн, продуманная архитектура, продвинутая обработка ошибок
-    Функционал: NameESP, SkeletonESP, Телепорт по нику/дисплею
+    SKEETHER HHHHHIIII
 ]]
 
 -- check the drawing api
