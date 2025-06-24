@@ -17,7 +17,7 @@ local CoreGui = game:GetService("CoreGui")
 local TweenService = game:GetService("TweenService")
 local UIS = game:GetService("UserInputService")
 
--- Cleanup old GUIs
+-- Cleanup old GUIS
 for _, v in ipairs(CoreGui:GetChildren()) do
     if v:IsA("ScreenGui") and v.Name:match("^SkeetherUltimateESP_") then
         v:Destroy()
@@ -40,7 +40,7 @@ if not gui.Parent then
 end
 
 -- Main Frame
-local mainWidth, mainHeight = 500, 300
+local mainWidth, mainHeight = 400, 220
 local main = Instance.new("Frame")
 main.Size = UDim2.new(0, mainWidth, 0, mainHeight)
 main.Position = UDim2.new(0, 60, 0, 120)
@@ -52,7 +52,6 @@ main.ZIndex = 2
 main.Parent = gui
 main.Visible = true
 
--- Corners & Border
 local corner = Instance.new("UICorner", main)
 corner.CornerRadius = UDim.new(0, 18)
 local border = Instance.new("UIStroke", main)
@@ -92,33 +91,33 @@ end
 
 -- Title
 local title = Instance.new("TextLabel", main)
-title.Size = UDim2.new(1, 0, 0, 48)
-title.Position = UDim2.new(0, 18, 0, 8)
+title.Size = UDim2.new(1, 0, 0, 36)
+title.Position = UDim2.new(0, 18, 0, 6)
 title.BackgroundTransparency = 1
-title.Text = "BOSS"
+title.Text = "skeether"
 title.TextColor3 = Color3.fromRGB(200, 210, 255)
-title.TextSize = 30
+title.TextSize = 26
 title.Font = Enum.Font.GothamBold
 title.TextXAlignment = Enum.TextXAlignment.Left
 title.ZIndex = 3
 
 local sep1 = Instance.new("Frame", main)
 sep1.Size = UDim2.new(1, -36, 0, 1)
-sep1.Position = UDim2.new(0, 18, 0, 58)
+sep1.Position = UDim2.new(0, 18, 0, 42)
 sep1.BackgroundColor3 = Color3.fromRGB(32, 32, 38)
 sep1.BorderSizePixel = 0
 sep1.ZIndex = 2
 
 -- Button/Toggle Style
-local function createButton(parent, text, position, name)
+local function createButton(parent, text, position, name, size)
     local btn = Instance.new("TextButton", parent)
-    btn.Size = UDim2.new(0, 180, 0, 48)
+    btn.Size = size or UDim2.new(0, 120, 0, 34)
     btn.Position = position
     btn.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
     btn.BorderColor3 = Color3.fromRGB(50, 50, 58)
     btn.Text = text
     btn.TextColor3 = Color3.fromRGB(210, 210, 210)
-    btn.TextSize = 20
+    btn.TextSize = 17
     btn.Font = Enum.Font.GothamBold
     btn.AutoButtonColor = false
     btn.Name = name
@@ -134,89 +133,72 @@ local function createButton(parent, text, position, name)
 end
 
 -- NameESP Toggle
-local nameespToggle = createButton(main, "NameESP: ON", UDim2.new(0, 24, 0, 78), "NameESPBtn")
+local nameespToggle = createButton(main, "NameESP: ON", UDim2.new(0, 24, 0, 54), "NameESPBtn")
 nameespToggle.TextColor3 = Color3.fromRGB(200,255,200)
 
 -- SkeletonESP Toggle
-local skeletonToggle = createButton(main, "Skeleton: ON", UDim2.new(0, 24, 0, 138), "SkeletonBtn")
+local skeletonToggle = createButton(main, "Skeleton: ON", UDim2.new(0, 24, 0, 96), "SkeletonBtn")
 skeletonToggle.TextColor3 = Color3.fromRGB(255,200,255)
 
 -- Separator before TP
 local sep2 = Instance.new("Frame", main)
 sep2.Size = UDim2.new(1, -36, 0, 1)
-sep2.Position = UDim2.new(0, 18, 0, 198)
+sep2.Position = UDim2.new(0, 18, 0, 140)
 sep2.BackgroundColor3 = Color3.fromRGB(32, 32, 38)
 sep2.BorderSizePixel = 0
 sep2.ZIndex = 2
 
 -- TP title
 local tpTitle = Instance.new("TextLabel", main)
-tpTitle.Size = UDim2.new(0, 180, 0, 28)
-tpTitle.Position = UDim2.new(0, 24, 0, 208)
+tpTitle.Size = UDim2.new(0, 120, 0, 20)
+tpTitle.Position = UDim2.new(0, 24, 0, 150)
 tpTitle.BackgroundTransparency = 1
 tpTitle.Text = "teleport to player:"
 tpTitle.TextColor3 = Color3.fromRGB(170, 170, 220)
-tpTitle.TextSize = 17
+tpTitle.TextSize = 13
 tpTitle.Font = Enum.Font.GothamBold
 tpTitle.TextXAlignment = Enum.TextXAlignment.Left
 tpTitle.ZIndex = 3
 
 -- TP Input
 local tpInput = Instance.new("TextBox", main)
-tpInput.Size = UDim2.new(0, 220, 0, 38)
-tpInput.Position = UDim2.new(0, 210, 0, 208)
+tpInput.Size = UDim2.new(0, 170, 0, 28)
+tpInput.Position = UDim2.new(0, 140, 0, 148)
 tpInput.PlaceholderText = "enter user"
 tpInput.Font = Enum.Font.Gotham
 tpInput.Text = ""
-tpInput.TextSize = 18
+tpInput.TextSize = 15
 tpInput.TextColor3 = Color3.fromRGB(255, 255, 255)
 tpInput.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
 tpInput.BorderSizePixel = 0
 tpInput.ClearTextOnFocus = false
 tpInput.ZIndex = 3
 local tpInputCorner = Instance.new("UICorner", tpInput)
-tpInputCorner.CornerRadius = UDim.new(0, 10)
+tpInputCorner.CornerRadius = UDim.new(0, 9)
 
 -- TP Button
-local tpBtn = Instance.new("TextButton", main)
-tpBtn.Size = UDim2.new(0, 110, 0, 38)
-tpBtn.Position = UDim2.new(0, 210, 0, 258)
+local tpBtn = createButton(main, "TP", UDim2.new(0, 140, 0, 183), "TPBtn", UDim2.new(0, 80, 0, 28))
 tpBtn.BackgroundColor3 = Color3.fromRGB(60, 60, 100)
-tpBtn.Text = "TP"
-tpBtn.Font = Enum.Font.GothamBold
-tpBtn.TextSize = 20
-tpBtn.TextColor3 = Color3.new(1, 1, 1)
-tpBtn.BorderSizePixel = 0
-tpBtn.AutoButtonColor = false
-tpBtn.ZIndex = 3
-local tpBtnCorner = Instance.new("UICorner", tpBtn)
-tpBtnCorner.CornerRadius = UDim.new(0, 10)
+tpBtn.TextSize = 15
 
--- TP Info
-local tpInfo = Instance.new("TextLabel", main)
-tpInfo.Size = UDim2.new(0, 170, 0, 26)
-tpInfo.Position = UDim2.new(0, 330, 0, 258)
-tpInfo.BackgroundTransparency = 1
-tpInfo.Text = ""
-tpInfo.Font = Enum.Font.Gotham
-tpInfo.TextSize = 16
-tpInfo.TextColor3 = Color3.fromRGB(255, 80, 80)
-tpInfo.TextWrapped = true
-tpInfo.Visible = false
-tpInfo.ZIndex = 3
+-- Annoy Button
+local annoyBtn = createButton(main, "annoy", UDim2.new(0, 230, 0, 183), "AnnoyBtn", UDim2.new(0, 80, 0, 28))
+annoyBtn.BackgroundColor3 = Color3.fromRGB(120, 60, 100)
+annoyBtn.TextSize = 15
 
--- myinf
-local info = Instance.new("TextLabel", main)
-info.AnchorPoint = Vector2.new(1, 1)
-info.Position = UDim2.new(1, -20, 1, -12)
-info.Size = UDim2.new(0.5, 0, 0, 15)
-info.BackgroundTransparency = 1
-info.Text = "by skeether"
-info.TextColor3 = Color3.fromRGB(70, 70, 90)
-info.TextSize = 12
-info.Font = Enum.Font.Gotham
-info.TextXAlignment = Enum.TextXAlignment.Right
-info.ZIndex = 2
+-- Notification
+local notifyLabel = Instance.new("TextLabel", main)
+notifyLabel.Size = UDim2.new(0, mainWidth-30, 0, 22)
+notifyLabel.Position = UDim2.new(0, 15, 1, -28)
+notifyLabel.BackgroundTransparency = 1
+notifyLabel.Text = ""
+notifyLabel.Font = Enum.Font.GothamBold
+notifyLabel.TextSize = 15
+notifyLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+notifyLabel.TextXAlignment = Enum.TextXAlignment.Left
+notifyLabel.TextYAlignment = Enum.TextYAlignment.Center
+notifyLabel.Visible = false
+notifyLabel.ZIndex = 5
 
 -- ESP Logic
 local nameespEnabled = true
@@ -241,7 +223,7 @@ skeletonToggle.MouseButton1Click:Connect(function()
     end
 end)
 
--- Button Animations (bugfixed: handles fast switching, only one tween per button!)
+-- Button Animations
 local function ButtonAnimator(btn, base, hover, press)
     local currTween = nil
     local state = "Base"  -- "Base", "Hover", "Press"
@@ -292,6 +274,7 @@ end
 ButtonAnimator(nameespToggle, Color3.fromRGB(30, 30, 35), Color3.fromRGB(60, 60, 70), Color3.fromRGB(16, 16, 22))
 ButtonAnimator(skeletonToggle, Color3.fromRGB(30, 30, 35), Color3.fromRGB(60, 60, 70), Color3.fromRGB(16, 16, 22))
 ButtonAnimator(tpBtn, Color3.fromRGB(60, 60, 100), Color3.fromRGB(110, 110, 180), Color3.fromRGB(40, 40, 80))
+ButtonAnimator(annoyBtn, Color3.fromRGB(120, 60, 100), Color3.fromRGB(180, 110, 180), Color3.fromRGB(100, 40, 80))
 
 -- NameESP
 _G._drawNames = {}
@@ -363,7 +346,7 @@ local function removeSkeletonDraw(plr)
     end
 end
 
--- Tracking player add/remove/character add
+-- Tracking player
 for _,p in ipairs(Players:GetPlayers()) do createNameDraw(p); createSkeletonDraw(p) end
 Players.PlayerAdded:Connect(function(p)
     createNameDraw(p)
@@ -381,7 +364,7 @@ for _,plr in ipairs(Players:GetPlayers()) do
     end)
 end
 
--- Main ESP update loop
+-- Main ESP
 RunService.RenderStepped:Connect(function()
     -- NameESP
     for plr, draw in pairs(_G._drawNames) do
@@ -463,14 +446,30 @@ local function TeleportTo(target)
     return true
 end
 
--- TP Info helpers
-local function ShowInfo(msg, color)
-    tpInfo.Text = msg
-    tpInfo.TextColor3 = color or Color3.fromRGB(255,80,80)
-    tpInfo.Visible = true
+-- Notification
+local notifyActive = false
+local notifyThread = nil
+local function ShowInfo(msg, color, time)
+    if notifyThread then
+        notifyActive = false
+        task.wait(0.01)
+    end
+    notifyActive = true
+    notifyLabel.Text = msg
+    notifyLabel.TextColor3 = color or Color3.fromRGB(255,80,80)
+    notifyLabel.Visible = true
+    notifyThread = coroutine.create(function()
+        task.wait(time or 1.2)
+        if notifyActive then
+            notifyLabel.Visible = false
+            notifyActive = false
+        end
+    end)
+    coroutine.resume(notifyThread)
 end
 local function HideInfo()
-    tpInfo.Visible = false
+    notifyActive = false
+    notifyLabel.Visible = false
 end
 
 tpBtn.MouseButton1Click:Connect(function()
@@ -504,19 +503,126 @@ tpBtn.MouseButton1Click:Connect(function()
 
     local ok, err = TeleportTo(target)
     if ok then
-        ShowInfo("tp to "..target.DisplayName.."!", Color3.fromRGB(80, 255, 80))
-        task.wait(0.8)
-        HideInfo()
+        ShowInfo("tp to "..target.DisplayName.."!", Color3.fromRGB(80, 255, 80), 0.8)
     else
-        ShowInfo("error: "..(err or "Unknown error"), Color3.fromRGB(255, 80, 80))
-        task.wait(1.5)
-        HideInfo()
+        ShowInfo("error: "..(err or "Unknown error"), Color3.fromRGB(255, 80, 80), 1.5)
     end
 end)
 
 tpInput.FocusLost:Connect(function(enterPressed)
     if enterPressed then
         tpBtn:Activate()
+    end
+end)
+
+-- Annoy logic variables
+local annoyActive = false
+local annoyConnection = nil
+local annoyTarget = nil
+
+local function AnnoyStart(target)
+    annoyTarget = target
+    annoyActive = true
+    if annoyConnection then annoyConnection:Disconnect() end
+    annoyConnection = RunService.RenderStepped:Connect(function()
+        if not annoyActive then return end
+        if not annoyTarget or not annoyTarget.Character or not annoyTarget.Character:FindFirstChild("HumanoidRootPart") then return end
+        if not lp or not lp.Character or not lp.Character:FindFirstChild("HumanoidRootPart") then return end
+        local myHRP = lp.Character.HumanoidRootPart
+        local targetHRP = annoyTarget.Character.HumanoidRootPart
+        if (myHRP.Position - targetHRP.Position).Magnitude > 2 then
+            myHRP.CFrame = CFrame.new(targetHRP.Position + Vector3.new(0, 3, 0))
+        end
+    end)
+end
+
+local function AnnoyStop()
+    annoyActive = false
+    annoyTarget = nil
+    if annoyConnection then
+        annoyConnection:Disconnect()
+        annoyConnection = nil
+    end
+end
+
+local function AnnoyButtonSetState(isAnnoying)
+    if isAnnoying then
+        annoyBtn.Text = "stop annoy"
+        annoyBtn.BackgroundColor3 = Color3.fromRGB(80, 180, 80)
+        annoyBtn.TextColor3 = Color3.fromRGB(20, 40, 20)
+    else
+        annoyBtn.Text = "annoy"
+        annoyBtn.BackgroundColor3 = Color3.fromRGB(120, 60, 100)
+        annoyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    end
+end
+AnnoyButtonSetState(false)
+
+annoyBtn.MouseButton1Click:Connect(function()
+    HideInfo()
+    if annoyActive then
+        AnnoyStop()
+        AnnoyButtonSetState(false)
+        ShowInfo("annoy stopped!", Color3.fromRGB(80, 255, 80), 0.8)
+        return
+    end
+
+    local query = tpInput.Text or ""
+    if query == "" then
+        TweenService:Create(tpInput, TweenInfo.new(0.09), {BackgroundColor3 = Color3.fromRGB(120, 40, 40)}):Play()
+        ShowInfo("enter nickname!", Color3.fromRGB(255, 80, 80))
+        task.wait(1.2)
+        TweenService:Create(tpInput, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(25, 25, 35)}):Play()
+        HideInfo()
+        return
+    end
+
+    local target = FindPlayer(query)
+    if not target then
+        TweenService:Create(tpInput, TweenInfo.new(0.09), {BackgroundColor3 = Color3.fromRGB(120, 40, 40)}):Play()
+        ShowInfo("player is not found", Color3.fromRGB(255, 80, 80))
+        task.wait(1.2)
+        TweenService:Create(tpInput, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(25, 25, 35)}):Play()
+        HideInfo()
+        return
+    end
+
+    if target == lp then
+        ShowInfo("bro...", Color3.fromRGB(255, 255, 80))
+        task.wait(1.2)
+        HideInfo()
+        return
+    end
+
+    AnnoyStart(target)
+    AnnoyButtonSetState(true)
+    ShowInfo("anoying "..target.DisplayName.."!", Color3.fromRGB(255, 180, 80), 0.8)
+end)
+
+-- Annoy auto-stop if player leaves or dies
+Players.PlayerRemoving:Connect(function(plr)
+    if annoyActive and annoyTarget == plr then
+        AnnoyStop()
+        AnnoyButtonSetState(false)
+        ShowInfo("annoy stopped: player left", Color3.fromRGB(255, 80, 80), 1)
+    end
+end)
+RunService.RenderStepped:Connect(function()
+    if annoyActive and annoyTarget then
+        local char = annoyTarget.Character
+        local hum = char and char:FindFirstChildOfClass("Humanoid")
+        if not char or not hum or hum.Health <= 0 then
+            AnnoyStop()
+            AnnoyButtonSetState(false)
+            ShowInfo("annoy stopped: player died", Color3.fromRGB(255, 80, 80), 1)
+        end
+    end
+end)
+
+tpInput.FocusLost:Connect(function(enterPressed)
+    if enterPressed and annoyActive then
+        AnnoyStop()
+        AnnoyButtonSetState(false)
     end
 end)
 
