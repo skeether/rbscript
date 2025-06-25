@@ -114,7 +114,7 @@ do
     local profFrame = Instance.new("Frame")
     profFrame.Name = "ProfileInfo"
     profFrame.Size = UDim2.new(0, 165, 0, 50)
-    profFrame.Position = UDim2.new(0, 170, 0, 54) -- Row with buttons: left margin 170, top after buttons
+    profFrame.Position = UDim2.new(0, 170, 0, 54)
     profFrame.BackgroundTransparency = 1
     profFrame.Parent = main
     profFrame.ZIndex = 10
