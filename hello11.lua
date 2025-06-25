@@ -108,6 +108,73 @@ sep1.BackgroundColor3 = Color3.fromRGB(32, 32, 38)
 sep1.BorderSizePixel = 0
 sep1.ZIndex = 2
 
+-- Profile
+do
+    -- Container frame for avatar
+    local profFrame = Instance.new("Frame")
+    profFrame.Name = "ProfileInfo"
+    profFrame.Size = UDim2.new(0, 165, 0, 50)
+    profFrame.Position = UDim2.new(0, 170, 0, 54) -- Row with buttons: left margin 170, top after buttons
+    profFrame.BackgroundTransparency = 1
+    profFrame.Parent = main
+    profFrame.ZIndex = 10
+
+    -- Avatar
+    local avatarImg = Instance.new("ImageLabel")
+    avatarImg.Name = "Avatar"
+    avatarImg.Size = UDim2.new(0, 42, 0, 42)
+    avatarImg.Position = UDim2.new(0, 0, 0, 4)
+    avatarImg.BackgroundTransparency = 1
+    avatarImg.Image = "rbxthumb://type=AvatarHeadShot&id="..lp.UserId.."&w=420&h=420"
+    avatarImg.Parent = profFrame
+    avatarImg.ZIndex = 11
+
+    local avatarCorner = Instance.new("UICorner", avatarImg)
+    avatarCorner.CornerRadius = UDim.new(1, 0)
+
+    -- Username (DisplayName)
+    local userLabel = Instance.new("TextLabel")
+    userLabel.Size = UDim2.new(0, 120, 0, 18)
+    userLabel.Position = UDim2.new(0, 48, 0, 5)
+    userLabel.BackgroundTransparency = 1
+    userLabel.Text = lp.DisplayName
+    userLabel.TextColor3 = Color3.fromRGB(200, 230, 255)
+    userLabel.Font = Enum.Font.GothamBold
+    userLabel.TextSize = 16
+    userLabel.TextXAlignment = Enum.TextXAlignment.Left
+    userLabel.ClipsDescendants = true
+    userLabel.ZIndex = 12
+    userLabel.Parent = profFrame
+
+    -- @Username
+    local unameLabel = Instance.new("TextLabel")
+    unameLabel.Size = UDim2.new(0, 120, 0, 13)
+    unameLabel.Position = UDim2.new(0, 48, 0, 25)
+    unameLabel.BackgroundTransparency = 1
+    unameLabel.Text = "@"..lp.Name
+    unameLabel.TextColor3 = Color3.fromRGB(155, 155, 180)
+    unameLabel.Font = Enum.Font.Gotham
+    unameLabel.TextSize = 13
+    unameLabel.TextXAlignment = Enum.TextXAlignment.Left
+    unameLabel.ClipsDescendants = true
+    unameLabel.ZIndex = 12
+    unameLabel.Parent = profFrame
+
+    -- UserId label
+    local idLabel = Instance.new("TextLabel")
+    idLabel.Size = UDim2.new(0, 120, 0, 12)
+    idLabel.Position = UDim2.new(0, 48, 0, 38)
+    idLabel.BackgroundTransparency = 1
+    idLabel.Text = "UserId: "..tostring(lp.UserId)
+    idLabel.TextColor3 = Color3.fromRGB(100, 120, 180)
+    idLabel.Font = Enum.Font.Gotham
+    idLabel.TextSize = 11
+    idLabel.TextXAlignment = Enum.TextXAlignment.Left
+    idLabel.ClipsDescendants = true
+    idLabel.ZIndex = 12
+    idLabel.Parent = profFrame
+end
+
 -- Button/Toggle Style
 local function createButton(parent, text, position, name, size)
     local btn = Instance.new("TextButton", parent)
